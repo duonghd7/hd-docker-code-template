@@ -6,11 +6,12 @@ WORKDIR /app
 # install dependencies 
 # A Wildcard to make sure that we will copy both package.json and package-lock.json
 COPY package*.json /app/
+COPY yarn.lock /app/
 
-RUN npm install
+RUN yarn install
 
 # Bundle app source
 COPY . . 
 
 EXPOSE 8080
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
