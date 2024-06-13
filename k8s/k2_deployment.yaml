@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $ENV-$PROJECT-deployment
+  namespace: default
+  labels:
+    app: $ENV-$PROJECT-deployment
+spec:
+  replicas: $REPLICAS
+  selector:
+    matchLabels:
+      app: $ENV-$PROJECT-pod
+  template:
+    metadata:
+      name: $ENV-$PROJECT-pod
+      namespace: default
+      labels:
+        app: $ENV-$PROJECT-pod
+    spec:
+      volumes:
+        - name: $ENV-$PROJECT-secret-volume
+          secret:
+            secretName: $ENV-$PROJECT-secret
+      containers:
+      - name: $ENV-$PROJECT-container
+        image: $IMAGE
+        ports:
+          - containerPort: $CONTAINER_PORT
+        volumeMounts:
+          - name: $ENV-$PROJECT-secret-volume
+            readOnly: true
+            mountPath: "/secret-folder"
