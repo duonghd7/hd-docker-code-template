@@ -7,7 +7,7 @@
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
-        "start:eks": "node --env-file='../secret-folder/.env' server.js"
+        "start:eks": "node --env-file='../secret-env/.env' server.js"
     },
     "dependencies": {
         "express": "^4.16.1",
