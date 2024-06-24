@@ -6,7 +6,7 @@ metadata:
   labels:
     app: $ENV-$PROJECT-deployment
 spec:
-  replicas: $REPLICAS
+  replicas: 1
   selector:
     matchLabels:
       app: $ENV-$PROJECT-pod
@@ -18,15 +18,21 @@ spec:
         app: $ENV-$PROJECT-pod
     spec:
       volumes:
-        - name: $ENV-$PROJECT-secret-volume
+        - name: $ENV-$PROJECT-secret-env
           secret:
-            secretName: $ENV-$PROJECT-secret
+            secretName: $ENV-$PROJECT-secret-env
       containers:
       - name: $ENV-$PROJECT-container
         image: $IMAGE
         ports:
           - containerPort: $CONTAINER_PORT
+        resources:
+          requests:
+            memory: '600Mi'
+            cpu: '200m'
+          limits:
+            memory: '600Mi'
         volumeMounts:
-          - name: $ENV-$PROJECT-secret-volume
+          - name: $ENV-$PROJECT-secret-env
             readOnly: true
-            mountPath: "/secret-folder"
+            mountPath: "/secret-env"

@@ -7,10 +7,11 @@
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
-        "start:eks": "node --env-file='../secret-env/.env' server.js"
+        "start:eks": "node --env-file='../secret-env/.env' server.js",
+        "build": "gulp build"
     },
     "dependencies": {
-        "express": "^4.16.1",
-        "dotenv": "^16.4.5"
+        "dotenv": "^16.4.5",
+        "express": "^4.16.1"
     }
 }
