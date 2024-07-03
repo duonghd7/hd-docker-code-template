@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  node_template_amd:
+    container_name: node_template_amd
+    image: duonghd/code-template:0.0.1
+    restart: "no"
+    volumes:
+      - ./.env:/secret-env/.env
+    ports:
+      - '3000:3000'
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+
+  node_template_arm:
+    container_name: node_template_arm
+    image: duonghd/code-template:0.0.2
+    restart: "no"
+    volumes:
+      - ./.env:/secret-env/.env
+    ports:
+      - '3001:3000'
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"

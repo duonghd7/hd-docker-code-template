@@ -1,5 +1,5 @@
 {
-    "name": "docker_web_app",
+    "name": "hd_docker_code_template",
     "version": "1.0.0",
     "license": "MIT",
     "description": "Node.js on Docker",
@@ -7,8 +7,7 @@
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
-        "start:eks": "node --env-file='../secret-env/.env' server.js",
-        "build": "gulp build"
+        "start:eks": "node --env-file='../secret-env/.env' server.js"
     },
     "dependencies": {
         "dotenv": "^16.4.5",

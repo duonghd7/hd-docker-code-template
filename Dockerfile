@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 node:20
+FROM --platform=linux/arm64 node:20
 
 #create app directory
 WORKDIR /app
@@ -11,5 +11,5 @@ RUN rm -rf k8s
 RUN rm -rf node_modules
 RUN yarn install
 
-EXPOSE 8080
+EXPOSE 3000
 CMD ["yarn", "start:eks"]
